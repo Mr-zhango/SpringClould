@@ -1,0 +1,34 @@
+server:
+  port: 9527
+
+spring:
+  application:
+    name: microservicecloud-zuul-gateway
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka,http://eureka7003.com:7003/eureka
+  instance:
+    instance-id: gateway-9527.com
+    prefer-ip-address: true
+
+zuul:
+  #ignored-services: microservicecloud-dept
+  #请求加上前缀
+  prefix: /atguigu
+  #忽略所有的真实服务名字(隐藏真实服务)
+  ignored-services: "*"
+  #设置路由规则
+  routes:
+    mydept.serviceId: microservicecloud-dept
+    mydept.path: /mydept/**
+
+
+#EUREKA的info信息的配置
+# $这个分隔符是在pom中进行配置过的呢
+info:
+  app.name: myfreecloud-microservicecloud
+  company.name: www.myfreecloud.cn
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$

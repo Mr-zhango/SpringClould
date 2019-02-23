@@ -1,0 +1,9 @@
+spring:
+  cloud:
+    config:
+      name: microservicecloud-config-dept-client #需要从github上读取的资源名称
+      #使用什么配置环境
+      #profile: test
+      profile: dev
+      label: master
+      uri: http://config-3344.com:3344 #SpringClouldConfig获取服务的地址
